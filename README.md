@@ -1,88 +1,69 @@
-# Chloe Chan · Personal Website
+# Neon Tetris · 霓虹俄罗斯方块
 
-Static personal site. Drag-and-drop deploy to GitHub Pages.
+![preview](preview.png)
 
-## Files
+A single-file, dependency-free Tetris implementation in vanilla HTML/CSS/JS.
+No build step, no frameworks — just open and play.
+
+零依赖的单文件俄罗斯方块，纯 HTML/CSS/JS。打开就能玩，无需构建。
+
+## Features · 特性
+
+- **7-bag randomizer** — fair piece distribution (标准 7 块随机)
+- **SRS rotation with wall kicks** — JLSTZ and I-piece kick tables (符合 SRS 规范的旋转与踢墙)
+- **Hold piece** + **Next×3 preview** (暂存 + 下一个×3 预览)
+- **Ghost piece** — see where it will land (幽灵落点指示)
+- **Lock delay 480ms** with move-resets (锁定延迟 + 移动重置)
+- **Hard drop, soft drop, 180° flip** (硬降、软降、180° 翻转)
+- **T-Spin detection** with combo scoring (T-Spin 判定与连击加分)
+- **Level / line counter / best score** persisted in `localStorage`
+- **Keyboard + touch** controls with DAS/ARR (键盘 + 触屏，含长按重复)
+- **Sound effects** (WebAudio, can be muted) (音效，可静音)
+- **Neon dark theme** with glow & glassmorphism (霓虹暗色主题)
+
+## Controls · 操作
+
+| Action | Keyboard | Touch |
+|---|---|---|
+| Move | ← / → | ◀ ▶ |
+| Soft drop | ↓ | ▼ |
+| Hard drop | Space | 硬降 |
+| Rotate CW | ↑ / X | ↻ |
+| Rotate CCW | Z | ↺ |
+| 180° flip | A | — |
+| Hold | C / Shift | 暂存 |
+| Pause | P / Esc | 暂停 |
+| Restart | R | — |
+
+## Files · 文件结构
 
 ```
-deploy/
-├── index.html              ← main page (single self-contained HTML)
-└── assets/
-    └── avatar_full.jpg     ← hero portrait
+.
+├── index.html      ← entry point (same game, for GitHub Pages root)
+├── tetris.html     ← identical game under explicit name
+├── preview.png     ← screenshot used in this README
+├── README.md
+└── .gitignore
 ```
 
-That's it. No build step, no node_modules.
+## Deploy to GitHub Pages · 部署到 GitHub Pages
 
-## Deploy to GitHub Pages (drag-and-drop, ~2 minutes)
+1. Create a new GitHub repository (public).
+2. Drag **all the files above** into the repo (via the web UI's *Add file → Upload files*).
+3. Commit.
+4. Go to **Settings → Pages**:
+   - **Source**: `Deploy from a branch`
+   - **Branch**: `main` / `root`
+   - Save.
+5. Your game will be live at `https://<your-username>.github.io/<repo-name>/` within ~1 minute.
 
-### 1. Create a new repo
+## Run locally · 本地运行
 
-Go to <https://github.com/new> and sign in.
+Just double-click `index.html` (or `tetris.html`) in any modern browser.
+No server required. Works fully offline.
 
-- **Repository name**: pick one of:
-  - `chloe-chan.github.io` → your site will live at `https://chloe-chan.github.io` (best for a personal site)
-  - anything else (e.g. `portfolio`) → your site will live at `https://<your-username>.github.io/portfolio/`
-- **Public** (required for free GitHub Pages) or **Private** if you have GitHub Pro
-- ✅ Add a README file (optional, helps with the empty-repo state)
-- Click **Create repository**
+双击 `index.html`（或 `tetris.html`）即可在任意现代浏览器中打开，完全离线可用。
 
-### 2. Upload the files
+## License · 许可
 
-On the repo page (Code tab), click the **Add file ▾** button → **Upload files**.
-
-Drag **both** of these into the upload area:
-
-```
-index.html
-assets/    (the whole folder, with avatar_full.jpg inside)
-```
-
-> Tip: if GitHub only lets you upload one folder at a time, drag `index.html` first, commit, then drag the `assets/` folder in a second commit.
-
-Click **Commit changes**.
-
-### 3. Turn on GitHub Pages
-
-Go to **Settings** (tab at the top) → **Pages** (left sidebar).
-
-- **Source**: `Deploy from a branch`
-- **Branch**: `main` · `/ (root)`
-- Click **Save**
-
-Wait 30–60 seconds. Refresh the **Pages** settings page — you'll see:
-
-> ✅ Your site is live at `https://<username>.github.io/<repo>/`
-
-### 4. Done
-
-That's the whole thing. To update later:
-
-1. Open `index.html` on GitHub
-2. Click the ✏️ pencil icon
-3. Edit, then **Commit changes**
-4. Site updates in ~30 seconds
-
----
-
-## Deploy elsewhere (alternatives)
-
-- **Netlify Drop**: <https://app.netlify.com/drop> — drag the `deploy/` folder onto the page. Done in 10 seconds.
-- **Vercel**: `npx vercel` inside the folder.
-- **Cloudflare Pages**: drag the folder at <https://dash.cloudflare.com/?to=/:account/pages>.
-
----
-
-## Customization
-
-Everything is in `index.html`. Common tweaks:
-
-| Change | Where |
-|---|---|
-| Your name / headline | `<h1>Chloe <em>Chan</em></h1>` |
-| Photo | replace `./assets/avatar_full.jpg` |
-| Email / phone | search for `chloe.chan.marketing@hku.com` |
-| Sticker text | `<div class="sticker top">…</div>` |
-| Colors | `:root { --accent … }` at top of `<style>` |
-| Fonts | the Google Fonts `<link>` in `<head>` |
-
-© 2026 Chloe Chan · Hong Kong SAR
+MIT — do whatever you like.
